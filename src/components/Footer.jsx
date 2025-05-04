@@ -19,7 +19,7 @@ const Footer = () => {
       }}
     >
       <Typography variant="body2" color="text.secondary">
-        © {new Date().getFullYear()} My Portfolio. Built with ❤️ and React.
+        © {new Date().getFullYear()} Rizwan's portfolio. Built with ❤️ and React.
       </Typography>
     </Box>
   );

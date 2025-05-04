@@ -7,11 +7,11 @@ import SideNav from './components/SideNav';
 import Footer from './components/Footer';
 import { PageTitleProvider } from './context/PageTitleContext';
 
-// Lazy-loaded pages
-//const Home = lazy(() => import('./pages/Home'));
-//const Projects = lazy(() => import('./pages/Projects'));
-//const Education = lazy(() => import('./pages/Education'));
-//const Contact = lazy(() => import('./pages/Contact'));
+//Lazy-loaded pages
+const Home = lazy(() => import('./pages/Home'));
+const Projects = lazy(() => import('./pages/Projects'));
+const Education = lazy(() => import('./pages/Education'));
+const Contact = lazy(() => import('./pages/Contact'));
 
 function App() {
   return (
