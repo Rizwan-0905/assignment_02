@@ -21,10 +21,9 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import { useNavigate } from 'react-router-dom';
 
-const drawerWidth = 240;
+const drawerWidth = 240;  // Default width of the sidebar
 
-const SideNav = () => {
-  const [visible, setVisible] = useState(true);
+const SideNav = ({ toggleSidebar, sidebarCollapsed }) => {
   const navigate = useNavigate();
 
   const menuItems = [
@@ -34,14 +33,14 @@ const SideNav = () => {
     { text: 'Contact', icon: <ContactMailIcon />, path: '/contact' },
   ];
 
-  return visible ? (
+  return (
     <Drawer
       variant="permanent"
       sx={{
-        width: drawerWidth,
+        width: sidebarCollapsed ? 80 : drawerWidth,  // Adjust sidebar width
         flexShrink: 0,
         '& .MuiDrawer-paper': {
-          width: drawerWidth,
+          width: sidebarCollapsed ? 80 : drawerWidth, // Apply the same logic to the drawer paper
           boxSizing: 'border-box',
           top: 64,
           height: 'calc(100% - 64px)',
@@ -56,8 +55,8 @@ const SideNav = () => {
     >
       {/* Toolbar with collapse button */}
       <Toolbar sx={{ justifyContent: 'flex-end' }}>
-        <IconButton onClick={() => setVisible(false)}>
-          <ChevronLeftIcon />
+        <IconButton onClick={() => toggleSidebar()}>
+          {sidebarCollapsed ? <MenuIcon /> : <ChevronLeftIcon />}
         </IconButton>
       </Toolbar>
       <Divider />
@@ -66,19 +65,12 @@ const SideNav = () => {
           <ListItem key={text} disablePadding>
             <ListItemButton onClick={() => navigate(path)}>
               <ListItemIcon>{icon}</ListItemIcon>
-              <ListItemText primary={text} />
+              {!sidebarCollapsed && <ListItemText primary={text} />}
             </ListItemButton>
           </ListItem>
         ))}
       </List>
     </Drawer>
-  ) : (
-    // Small button to reopen sidebar
-    <Box sx={{ position: 'fixed', top: 10, left: 10, zIndex: 1300 }}>
-      <IconButton onClick={() => setVisible(true)} color="primary">
-        <MenuIcon />
-      </IconButton>
-    </Box>
   );
 };
 
