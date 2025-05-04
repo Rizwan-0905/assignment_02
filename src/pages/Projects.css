@@ -1,0 +1,25 @@
+.projects-container {
+  background-color: #e0f7fa;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.project-card {
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-icon {
+  margin-bottom: 10px;
+}
